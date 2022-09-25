@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    max-width: 40vw;
+    min-width: 40vw;
     margin: auto;
     border-radius: 10px;
     /* color: #fff; */
@@ -21,6 +21,7 @@
 .thead {
     /* background-color: rgb(66, 61, 61); */
     background-color: rgb(247, 219, 10);
+    /* margin-bottom: 15px; */
 }
 .table__th {
     padding: 10px 10px 10px 15px;

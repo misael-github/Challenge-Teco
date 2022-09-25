@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@0,400;1,700&family=Roboto+Slab:wght@600;700&family=Roboto:wght@400;500;700&display=swap');
+.btn{
+    width: 30px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}

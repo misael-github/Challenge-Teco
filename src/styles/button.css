@@ -15,12 +15,13 @@
     background-color: rgb(69, 168, 49);
 }
 .secondary {
-    color: rgb(88, 85, 85);
-    border: solid 1px rgb(88, 85, 85);
+    color: rgb(55, 60, 82);
+    border: solid 2px rgb(55, 60, 82);
     padding:7px 10px ;
+    background-color: #fff;
 }
 .secondary:hover {
-   background-color: grey;
+   background-color: rgb(55, 60, 82);
    color: #fff;
 }
 .danger {

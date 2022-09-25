@@ -19,16 +19,21 @@
     color: gray;
 }
 .thead {
-    /* background-color: rgb(66, 61, 61); */
-    background-color: rgb(247, 219, 10);
-    /* margin-bottom: 15px; */
+    /* background-color: rgb(247, 219, 10); */
 }
 .table__th {
     padding: 10px 10px 10px 15px;
     font-weight: 700;
     text-transform: uppercase;
 }
+.acciones {
+    margin-left: 40px;
+}
 .table__td{
     padding: 15px;
     border-bottom: solid 1px gray;
+}
+.table__container-buttons-input{
+    display: flex;
+    justify-content: space-between;
 }

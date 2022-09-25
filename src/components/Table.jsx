@@ -12,7 +12,7 @@ const Table = () => {
         <Link to="/create-user">
         <Button className="btn primary" name="Crear usuario"></Button>
         </Link>
-        <Input></Input>
+        <Input className="input-search" placeholder="Bucar por DNI"></Input>
         </div>
         <hr/>
       <table>

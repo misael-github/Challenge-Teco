@@ -1,9 +1,9 @@
 import React from 'react'
 import "../styles/input.css"
-const Input = () => {
+const Input = (props) => {
   return (
     <>
-      <input className='input-filter' placeholder='Buscar por DNI'></input>
+      <input className={props.className} placeholder={props.placeholder}></input>
     </>
   )
 }

@@ -1,34 +1,4 @@
+.title {
+    color:rgb(233, 231, 231);
+}
 
-.container-form {
-    width: 40vw;
-    /* height: 55vh; */
-    margin: auto;
-    background-color: #fff;
-    border-radius: 10px;
-    margin-top: 80px;
-}
-.form {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: 20px 20px auto auto;
-    padding-top: 10px;
-}
-.text-field {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-}
-.container-button{
-    display: flex;
-    justify-content: flex-end;
-    width: 80%;
-    margin: 20px;
-}
-.btn-crear{
-    width: 90px;
-}
-.btn-cancel {
-    width: 90px;
-    margin-left: 20px;
-}

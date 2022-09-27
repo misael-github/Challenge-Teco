@@ -3,6 +3,9 @@ import {useForm} from "react-hook-form"
 import "../styles/form.css"
 import Input from './Input'
 import Button from './Button'
+import { useState } from 'react'
+import uniqid from "uniqid"
+import axios from "axios"
 
 const Form = () => {
     // hook personalizado
@@ -11,6 +14,31 @@ const Form = () => {
     const onSubmit = (data) => {
       console.log(data)
     }
+     // hooks
+    const [dni, setDni] = useState("")
+    const [name, setName] = useState("")
+    const [lastName, setlastName] = useState("")
+    const [sex, setSex] = useState("")
+    const [phone, setPhone] = useState("")
+
+   const addUser = () => {
+      const user = {
+        dni: dni,
+        name: name,
+        lastName: lastName,
+        sex: sex,
+        phone:phone,
+        idUser: dni
+      }
+      console.log(user)
+
+      axios.post("/api/user/create-user", user)
+      .then(res => {
+        alert(res.data)
+      })
+      .then(err => {console.log(err)})
+   }
+
   return (
     <>
       <div className="container-form">
@@ -22,12 +50,13 @@ const Form = () => {
               className="input-form"
               placeholder=""
               type="number"
-              
+              value={dni}
+              onChange={(e) => (setDni(e.target.value))}
               {...register("dni", {
                 required: true,
               })}
             />
-            {errors.dni?.type === "required" && <p>el campo DNI es requerido</p>}
+            {errors.dni?.type === "required" && <p className='form__required-data'>* el campo DNI es requerido</p>}
           </div>
           <div className="text-field">
             <label className="label-form">Nombre:</label>
@@ -35,13 +64,14 @@ const Form = () => {
               className="input-form"
               placeholder=""
               type="text"
-              
+              value={name}
+              onChange={(e) => (setName(e.target.value))}
               {...register("name", {
                 required: true,
               })}
             />
             {errors.name?.type === "required" && (
-              <p>el campo nombre es requerido</p>
+              <p className='form__required-data'>* el campo nombre es requerido</p>
             )}
           </div>
           <div className="text-field">
@@ -50,14 +80,14 @@ const Form = () => {
               className="input-form"
               placeholder=""
               type="text"
-              name=""
-              id=""
+              value={lastName}
+              onChange={(e) => (setlastName(e.target.value))}
               {...register("lastName", {
                 required: true,
               })}
             />
              {errors.lastName?.type === "required" && (
-              <p>el campo apelldio es requerido</p>
+              <p className='form__required-data'>* el campo apelldio es requerido</p>
             )}
           </div>
           <div className="text-field">
@@ -80,21 +110,21 @@ const Form = () => {
               className="input-form"
               type="number"
               placeholder=""
-              name=""
-              id=""
+              value={phone}
+              onChange={(e) => (setPhone(e.target.value))}
               {...register("phone", {
                 required: true,
               })}
             />
              {errors.phone?.type === "required" && (
-              <p>el campo teléfono es requerido</p>
+              <p className='form__required-data'>* el campo teléfono es requerido</p>
             )}
               {errors.phone?.type === "maxLength" && (
-              <p>el campo teléfono debe tener menos de 10 caracteres</p>
+              <p className='form__required-data'>* el campo teléfono debe tener menos de 10 caracteres</p>
             )}
           </div>
           <div className="container-button">
-            <input type="submit" className="btn primary" value="Enviar" />
+            <input type="submit" className="btn primary" value="Crear" />
             {/* <Button className="btn primary btn-crear" name="Crear"></Button> */}
             <Link to="/">
               <Button

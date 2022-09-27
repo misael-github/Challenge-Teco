@@ -9,9 +9,11 @@ import SubTitle from '../components/SubTitle'
 function CreateUser() {
   return (
     <>
-    <Title title="App empleados"></Title>
+    <Title title="App usuarios"></Title>
     <SubTitle subTitle="Crear usuario"></SubTitle>
-      <Form></Form>
+      <Form>
+        
+      </Form>
     </>
   )
 }

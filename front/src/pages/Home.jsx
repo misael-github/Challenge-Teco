@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <>
       
-      <Title title="App empleados"></Title>
+      <Title title="App usuarios"></Title>
     
       <Table></Table>
       {/* <Button className="btn secondary" name="Open Modal" onClick={openLoginModal}></Button> */}

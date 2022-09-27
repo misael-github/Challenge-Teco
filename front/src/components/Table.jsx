@@ -5,12 +5,16 @@ import Input from './Input'
 import {Link} from "react-router-dom"
 import UseModal from '../hooks/UseModal'
 import Modal from './Modal'
+
 const Table = () => {
+  // custom hook
   const [isOpenConfirmModal,openLoginConfirmModal, closeLoginConfirmModal ] = UseModal()
+
+
   return (
     <div className="container-table">
       <div className="table">
-        <h3>Listado de empleados activos</h3>
+        <h3>Listado de usuarios activos</h3>
         <div className="table__container-buttons-input">
           <Link to="/create-user">
             <Button className="btn primary" name="Crear usuario"></Button>

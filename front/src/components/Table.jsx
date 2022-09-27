@@ -3,13 +3,31 @@ import "../styles/table.css"
 import Button from './Button'
 import Input from './Input'
 import {Link} from "react-router-dom"
-import UseModal from '../hooks/UseModal'
-import Modal from './Modal'
+import User from './User'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import axios from 'axios'
+
 
 const Table = () => {
-  // custom hook
-  const [isOpenConfirmModal,openLoginConfirmModal, closeLoginConfirmModal ] = UseModal()
+ 
+const [dataUser, setDataUser] = useState([])
 
+useEffect(() => {
+   axios.get("/api/user/get-users")
+   .then(res => {
+    console.log(res.data)
+   }).catch(err  => {console.log(err)})
+},[])
+
+// Mapear los usuarios en objeto usuario
+const listUsers = dataUser.map(user => {
+  return(
+     <div>
+        <User user={user}></User>
+     </div>
+  )
+})
 
   return (
     <div className="container-table">
@@ -35,35 +53,9 @@ const Table = () => {
             {/* <hr/> */}
           </thead>
           <tbody>
-            <tr>
-              <td className="table__td">01</td>
-              <td className="table__td">Carlos</td>
-              <td className="table__td">Torres</td>
-              <td className="table__td">Masculino</td>
-              <td className="table__td">1157485829</td>
-              <td className="table__td">
-                <Link to="edit-user">
-                  <Button className=" btn secondary" name="Editar"></Button>
-                </Link>
-              </td>
-              <td className="table__td">
-                <Button
-                  className="btn danger"
-                  name="Eliminar"
-                  onClick={openLoginConfirmModal}
-                ></Button>
-              </td>
-              <Modal
-                isOpen={isOpenConfirmModal}
-                closeModal={closeLoginConfirmModal}
-                title="Confirm"
-              >
-                <p>
-                  <b>Desea eliminar el usuario?</b>
-                </p>
-              </Modal>
-            </tr>
-            <tr>
+               {listUsers}
+            </tbody>
+            {/* <tr>
               <td className="table__td">01</td>
               <td className="table__td">Carlos</td>
               <td className="table__td">Torres</td>
@@ -88,8 +80,8 @@ const Table = () => {
               <td className="table__td">
                 <Button className="btn danger" name="Eliminar"></Button>
               </td>
-            </tr>
-          </tbody>
+            </tr> */}
+         
         </table>
       </div>
     </div>

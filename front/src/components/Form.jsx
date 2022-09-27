@@ -124,7 +124,7 @@ const Form = () => {
             )}
           </div>
           <div className="container-button">
-            <input type="submit" className="btn primary" value="Crear" />
+            <input type="submit" className="btn primary" value="Crear" onClick={addUser} />
             {/* <Button className="btn primary btn-crear" name="Crear"></Button> */}
             <Link to="/">
               <Button

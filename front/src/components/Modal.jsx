@@ -2,12 +2,13 @@ import React from 'react'
 import "../styles/modal.css"
 import Button from './Button'
 
-const Modal = ({isOpen, closeModal, children, title}) => {
+const Modal = ({isOpen, closeModal, children, title, deleteUser}) => {
 
     const  handleModalDialogClick = (e) => {
         e.stopPropagation()
      
     }
+   
   return (
     <>
     <div className={`modal ${isOpen && 'modal-open'}`} onClick={closeModal}>
@@ -16,7 +17,9 @@ const Modal = ({isOpen, closeModal, children, title}) => {
         <h1>{title}</h1>
         {/* Recibe los elementos html que le pase al padre */}
         {children} 
-        <Button onClick={closeModal} className="btn secondary" name="Close modal"></Button>
+        <Button  className="btn secondary" name="Close modal" onClick={() => {
+          closeModal();
+          deleteUser()}}></Button>
         </div>
     </div>
 

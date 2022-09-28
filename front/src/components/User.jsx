@@ -1,13 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from './Button'
 import Modal from './Modal'
 import UseModal from '../hooks/UseModal'
+import axios from 'axios'
 
 const User = ({user, key}) => {
      // custom hook
   const [isOpenConfirmModal,openLoginConfirmModal, closeLoginConfirmModal ] = UseModal()
   console.log(user.userId)
+
+  const url = useNavigate()
+
+  // Delete user
+  const deleteUser = (userId) => {
+    axios.post("/api/user/delete-user", {userId:userId})
+    .then(res => {
+      console.log(res.data)
+      url(0)
+    })
+    .catch(err => {
+      console.log(err,`error al eliminar el user ${user.id}`)
+    })
+  }
   return (
     <>
           <tr>
@@ -32,6 +47,7 @@ const User = ({user, key}) => {
                 isOpen={isOpenConfirmModal}
                 closeModal={closeLoginConfirmModal}
                 title="Confirm"
+                deleteUser={deleteUser}
               >
                 <p>
                   <b>¿Desea eliminar el usuario?</b>

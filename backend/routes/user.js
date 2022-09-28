@@ -16,10 +16,6 @@ const SchemaUser = new Schema({
 const ModelUser = mongoose.model("users", SchemaUser)
 module.exports = router
 
-// /api/user/test   ruta de prueba
-// router.get("/test", (req, res) => {
-//     res.end("Saludo carga desde route test")
-// })
 
 // Add User
 router.post("/create-user", (req, res) => {
@@ -56,6 +52,16 @@ router.post("/get-user", (req, res) => {
     ModelUser.find({userId:req.body.userId}, (docs, err) => {
         if(!err){
             res.send(docs)
+        }else {
+            res.send(err)
+        }
+    })
+})
+// Get user DNI
+router.post("/get-user-dni", (req, res) => {
+    ModelUser.findOne({dni:req.body.dni}, (docs, err) => {
+        if(!err){
+            res.send("usuario encontrado")
         }else {
             res.send(err)
         }

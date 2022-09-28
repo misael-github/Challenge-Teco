@@ -12,8 +12,6 @@ function App() {
           <Table></Table>   */}
           {/* <Title title="App de usuarios"></Title> */}
       <Routes>
-          {/* <Route exact path="/" element={<Title></Title>}></Route> */}
-          {/* <Route exact path="/" element={<Table></Table>}></Route> */}
           <Route exact path="/" element={<Home></Home>}></Route>
           <Route exact
             path="/create-user"
@@ -23,6 +21,7 @@ function App() {
             path="/edit-user/:id"
             element={<EditUser></EditUser>}
           ></Route>
+          <Route exact path="/get-user/:dni" element={<Home></Home>}></Route>
       </Routes>
       
     </div>

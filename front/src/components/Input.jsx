@@ -3,7 +3,7 @@ import "../styles/input.css"
 const Input = (props) => {
   return (
     <>
-      <input className={props.className} type={props.type} placeholder={props.placeholder}></input>
+      <input className={props.className} onChange={props.onChange} type={props.type} placeholder={props.placeholder}></input>
     </>
   )
 }

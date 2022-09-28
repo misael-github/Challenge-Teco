@@ -6,14 +6,11 @@ import Button from './Button'
 import { useState } from 'react'
 import uniqid from "uniqid"
 import axios from "axios"
-import Modal from './Modal'
-import UseModal from '../hooks/UseModal'
 import Swal from "sweetalert2"
 
 const Form = (props) => {
     // hook personalizado
-    const {register,formState:{errors}, handleSubmit} = useForm();
-    const [isOpenConfirmModal,openLoginConfirmModal, closeLoginConfirmModal] = UseModal()
+    
     const navigate = useNavigate()
 
     const onSubmit = (data) => {
@@ -40,6 +37,7 @@ const Form = (props) => {
       
       axios.post("/api/user/create-user", user)
       .then(res => {
+        console.log("usuario creado")
         Swal.fire({
           title: '¡Usuario creado exitosamente!',
           icon: 'success',
@@ -49,31 +47,19 @@ const Form = (props) => {
           if(resp.isConfirmed) {
             navigate("/")
               // El usuario hizo clic en el botón aceptar
-              // Necesitas agregar información adicional en alguna parte
              
           } else {
               // El usuario cerró la ventana modal sin hacer clic en el botón aceptar
           }
       });;
-
-        // alert(res.data)
-        // <Modal
-        // isOpen={isOpenConfirmModal}
-        //         closeModal={closeLoginConfirmModal}
-        //         title="Confirm"
-        // >
-        //   <h1>¡Usuario creado exitosamente!</h1>
-        // </Modal>
-
       })
-      .then(err => {console.log(err)})
+       .then(err => {console.log(err)})
    }
-   console.log(sex)
   return (
     <>
       <div className="container-form">
         {/* pasa por el hook handleSubmit antes de ejecutar la funcion*/}
-        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <form className="form" onSubmit={onSubmit}>
           <div className="text-field">
             <label className="label-form">DNI:</label>
             <input
@@ -83,11 +69,7 @@ const Form = (props) => {
               type="number"
               value={dni}
               onChange={(e) => {setDni(e.target.value)}}
-              // {...register("dni", {
-              //   required: true,
-              // })}
-            />
-            {/* {errors.dni?.type === "required" && <p className='form__required-data'>* el campo DNI es requerido</p>} */}
+            /> 
           </div>
           <div className="text-field">
             <label className="label-form">Nombre:</label>

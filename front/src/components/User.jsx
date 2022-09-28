@@ -4,18 +4,16 @@ import Button from './Button'
 import axios from 'axios'
 import { AOS } from 'aos'
 import "aos/dist/aos.css"
-import { useEffect } from 'react'
 import Swal from 'sweetalert2'
 
 
 const User = ({user}) => {
-     // custom hook
-  // const [isOpenConfirmModal,openLoginConfirmModal, closeLoginConfirmModal] = UseModal()
-  console.log(user.userId)
+    
+  // console.log(user.userId)
 
   const url = useNavigate()
 
- // modal
+ // Modal
  const Modal = () => {
     Swal.fire({
       title:"¿Desea eliminar el usuario?",

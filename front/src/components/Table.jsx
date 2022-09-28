@@ -1,40 +1,53 @@
-import React from 'react'
-import "../styles/table.css"
-import Button from './Button'
-import Input from './Input'
-import {Link} from "react-router-dom"
-import User from './User'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import axios from 'axios'
-import "aos/dist/aos.css"
-import { AOS } from 'aos'
+import React from "react";
+import "../styles/table.css";
+import Button from "./Button";
+import Input from "./Input";
+import { Link } from "react-router-dom";
+import User from "./User";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import "aos/dist/aos.css";
+import { AOS } from "aos";
+import { useParams } from "react-router-dom";
 
 const Table = () => {
- 
-const [dataUser, setDataUser] = useState([])
+  const [dataUser, setDataUser] = useState([]);
 
-useEffect(() => {
-  axios
-    .get("/api/user/get-users")
-    .then((res) => {
-      // console.log(res.data, "desde la table");
-      setDataUser(res.data);
-      // AOS.init()
+  const [search, setSearch] = useState("");
+
+  const params = useParams()
+
+  useEffect(() => {
+    axios
+      .get("/api/user/get-users")
+      .then((res) => {
+        // console.log(res.data, "desde la table");
+        setDataUser(res.data);
+        // AOS.init()
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  // Buscar por dni
+  const Search = () => {
+    axios.post("/api/user/get-user-dni", {dni: params.dni})
+    .then(res => {
+      // console.log(res.data, "usuario encontrado: ", search)
     })
-    .catch((err) => {
-      console.log(err);
-    });
-}, []);
+  };
+  // console.log(search);
 
-// Mapear los usuarios en objeto usuario
-const listUsers = dataUser.map(user => {
-  return(
-     <>
-        <User user={user} ></User>
-     </>
-  )
-})
+  // Mapea los usuarios 
+  const listUsers = dataUser.map((user) => {
+    return (
+      <>
+        <User user={user}></User>
+      </>
+    );
+  });
 
   return (
     <div className="container-table">
@@ -44,7 +57,21 @@ const listUsers = dataUser.map(user => {
           <Link to="/create-user">
             <Button className="btn primary" name="Crear usuario"></Button>
           </Link>
-          <Input className="input-search" placeholder="Bucar por DNI" type="search"></Input>
+          <div>
+          <Input
+            className="input-search"
+            placeholder="Bucar por DNI"
+            type="search"
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          ></Input>
+          <Button
+            className="btn primary"
+            name="Buscar"
+            onClick={Search}
+          ></Button>
+          </div>
         </div>
         <hr />
         <table>
@@ -59,27 +86,11 @@ const listUsers = dataUser.map(user => {
             </tr>
             {/* <hr/> */}
           </thead>
-          <tbody>
-               {listUsers}
-            </tbody>
-             {/* <tr>
-              <td className="table__td">01</td>
-              <td className="table__td">Carlos</td>
-              <td className="table__td">Torres</td>
-              <td className="table__td">Masculino</td>
-              <td className="table__td">1157485829</td>
-              <td className="table__td">
-                <Button className="btn secondary" name="Editar"></Button>
-              </td>
-              <td className="table__td">
-                <Button className="btn danger" name="Eliminar"></Button>
-              </td>
-            </tr> */}
-         
+          <tbody>{listUsers}</tbody>
         </table>
       </div>
     </div>
   );
-}
+};
 
 export default Table;

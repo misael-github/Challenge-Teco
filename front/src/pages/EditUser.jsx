@@ -47,28 +47,43 @@ const EditUser = () => {
         phone:phone,
         userId: params.id
      }
-     
+     // Modal
+//  const Modal = () => {
+//   Swal.fire({
+//     title:"¡Usuario actualizado exitosamente!",
+//     confirmButtonText:"Aceptar"
+//   }).then(res => {
+//     if(res.isConfirmed){
+
+//       // navigate(0)
+//       // deleteUser(user.userId)
+//     }else{
+//     Swal.fire({
+//       title:"Error al editar usuario, intente nuevamente por favor"
+//     })
+//     }
+//   })
+// }
+
      // Petición usando axios
      axios.post("/api/user/edit-user", upDateUser)
       .then(res => {
         Swal.fire({
-          title: '¡Usuario actualizado exitosamente!',
+          title: '¡Usuario editado exitosamente!',
           icon: 'success',
           confirmButtonText: 'OK'
-      // Encadena la promesa para saber lo que pasó en la ventana modal
-      }).then(resp => {
-          if(resp.isConfirmed) {
-            navigate("/")
-              // El usuario hizo clic en el botón aceptar
-              // Necesitas agregar información adicional en alguna parte
-             
-          } else {
-              // El usuario cerró la ventana modal sin hacer clic en el botón aceptar
-          }
-      });;
-       
+        }).then(res => {
+           if(res.isConfirmed){
+            navigate(0)
+           }
+        })
       })
-      .then(err => {console.log(err)})
+       .catch(err => 
+        Swal.fire({
+          title:"Error al editar usuario, intente nuevamente por favor",
+          confirmButtonText:"Aceptar",
+      })
+      )
    }
   return (
     <div>

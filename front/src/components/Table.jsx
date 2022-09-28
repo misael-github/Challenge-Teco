@@ -7,7 +7,8 @@ import User from './User'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
-
+import "aos/dist/aos.css"
+import { AOS } from 'aos'
 
 const Table = () => {
  
@@ -19,6 +20,7 @@ useEffect(() => {
     .then((res) => {
       // console.log(res.data, "desde la table");
       setDataUser(res.data);
+      // AOS.init()
     })
     .catch((err) => {
       console.log(err);

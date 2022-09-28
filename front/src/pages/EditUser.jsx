@@ -1,11 +1,12 @@
 
-import { useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import SubTitle from '../components/SubTitle'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Form from '../components/Form'
 import { Link } from 'react-router-dom'
 import Button from '../components/Button'
+import Swal from 'sweetalert2'
  
 const EditUser = () => {
     const params = useParams()
@@ -16,6 +17,8 @@ const EditUser = () => {
       const [sex, setSex] = useState("")
       const [phone, setPhone] = useState("")
     // console.log(params)
+
+    const navigate = useNavigate()
 
     useEffect(() =>{
       axios.post("/api/user/get-user", {userId: params.id})
@@ -44,11 +47,26 @@ const EditUser = () => {
         phone:phone,
         userId: params.id
      }
-     // Petición
+     
+     // Petición usando axios
      axios.post("/api/user/edit-user", upDateUser)
       .then(res => {
-        console.log(res.data)
-        alert(res.data)
+        Swal.fire({
+          title: '¡Usuario actualizado exitosamente!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+      // Encadena la promesa para saber lo que pasó en la ventana modal
+      }).then(resp => {
+          if(resp.isConfirmed) {
+            navigate("/")
+              // El usuario hizo clic en el botón aceptar
+              // Necesitas agregar información adicional en alguna parte
+             
+          } else {
+              // El usuario cerró la ventana modal sin hacer clic en el botón aceptar
+          }
+      });;
+       
       })
       .then(err => {console.log(err)})
    }
@@ -67,11 +85,7 @@ const EditUser = () => {
               type="number"
               value={dni}
               onChange={(e) => {setDni(e.target.value)}}
-              // {...register("dni", {
-              //   required: true,
-              // })}
             />
-            {/* {errors.dni?.type === "required" && <p className='form__required-data'>* el campo DNI es requerido</p>} */}
           </div>
           <div className="text-field">
             <label className="label-form">Nombre:</label>

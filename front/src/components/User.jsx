@@ -1,16 +1,31 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Button from './Button'
-import Modal from './Modal'
-import UseModal from '../hooks/UseModal'
 import axios from 'axios'
+import { AOS } from 'aos'
+import "aos/dist/aos.css"
+import { useEffect } from 'react'
+import Swal from 'sweetalert2'
 
-const User = ({user, key}) => {
+
+const User = ({user}) => {
      // custom hook
-  const [isOpenConfirmModal,openLoginConfirmModal, closeLoginConfirmModal ] = UseModal()
+  // const [isOpenConfirmModal,openLoginConfirmModal, closeLoginConfirmModal] = UseModal()
   console.log(user.userId)
 
   const url = useNavigate()
+
+ // modal
+ const Modal = () => {
+    Swal.fire({
+      title:"¿Desea eliminar el usuario?",
+      confirmButtonText:"Aceptar"
+    }).then(res => {
+      if(res.isConfirmed){
+        deleteUser(user.userId)
+      }
+    })
+ }
 
   // Delete user
   const deleteUser = (userId) => {
@@ -40,19 +55,9 @@ const User = ({user, key}) => {
                 <Button
                   className="btn danger"
                   name="Eliminar"
-                  onClick={openLoginConfirmModal}
+                  onClick={Modal}
                 ></Button>
               </td>
-              <Modal
-                isOpen={isOpenConfirmModal}
-                closeModal={closeLoginConfirmModal}
-                title="Confirm"
-                deleteUser={deleteUser}
-              >
-                <p>
-                  <b>¿Desea eliminar el usuario?</b>
-                </p>
-              </Modal>
             </tr> 
     </>
   )

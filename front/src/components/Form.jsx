@@ -1,4 +1,4 @@
-import  {Link} from 'react-router-dom'
+import  {Link, useNavigate} from 'react-router-dom'
 import {useForm} from "react-hook-form"
 import "../styles/form.css"
 import Input from './Input'
@@ -6,10 +6,15 @@ import Button from './Button'
 import { useState } from 'react'
 import uniqid from "uniqid"
 import axios from "axios"
+import Modal from './Modal'
+import UseModal from '../hooks/UseModal'
+import Swal from "sweetalert2"
 
 const Form = (props) => {
     // hook personalizado
     const {register,formState:{errors}, handleSubmit} = useForm();
+    const [isOpenConfirmModal,openLoginConfirmModal, closeLoginConfirmModal] = UseModal()
+    const navigate = useNavigate()
 
     const onSubmit = (data) => {
       addUser()
@@ -35,7 +40,31 @@ const Form = (props) => {
       
       axios.post("/api/user/create-user", user)
       .then(res => {
-        alert(res.data)
+        Swal.fire({
+          title: '¡Usuario creado exitosamente!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+      // Encadena la promesa para saber lo que pasó en la ventana modal
+      }).then(resp => {
+          if(resp.isConfirmed) {
+            navigate("/")
+              // El usuario hizo clic en el botón aceptar
+              // Necesitas agregar información adicional en alguna parte
+             
+          } else {
+              // El usuario cerró la ventana modal sin hacer clic en el botón aceptar
+          }
+      });;
+
+        // alert(res.data)
+        // <Modal
+        // isOpen={isOpenConfirmModal}
+        //         closeModal={closeLoginConfirmModal}
+        //         title="Confirm"
+        // >
+        //   <h1>¡Usuario creado exitosamente!</h1>
+        // </Modal>
+
       })
       .then(err => {console.log(err)})
    }

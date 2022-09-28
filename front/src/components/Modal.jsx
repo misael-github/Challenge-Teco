@@ -17,7 +17,7 @@ const Modal = ({isOpen, closeModal, children, title, deleteUser}) => {
         <h1>{title}</h1>
         {/* Recibe los elementos html que le pase al padre */}
         {children} 
-        <Button  className="btn secondary" name="Close modal" onClick={() => {
+        <Button  className="btn secondary" name="Eliminar" onClick={() => {
           closeModal();
           deleteUser()}}></Button>
         </div>

@@ -85,7 +85,7 @@ const Form = (props) => {
           </div>
           <div className="text-field">
             <label className="label-form">Sexo:</label>
-            <select 
+            <select className="form__select-sex"
              required
              value={sex}
              onChange={(e) => {setSex(e.target.value)}}

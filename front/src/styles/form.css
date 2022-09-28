@@ -36,3 +36,8 @@
     color: red;
     font-size: 14px;
 }
+.form__select-sex{
+    width: 80%;
+    padding: 12px;
+    border-radius: 5px;
+}

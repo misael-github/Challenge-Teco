@@ -14,18 +14,23 @@ const Table = () => {
 const [dataUser, setDataUser] = useState([])
 
 useEffect(() => {
-   axios.get("/api/user/get-users")
-   .then(res => {
-    console.log(res.data)
-   }).catch(err  => {console.log(err)})
-},[])
+  axios
+    .get("/api/user/get-users")
+    .then((res) => {
+      // console.log(res.data, "desde la table");
+      setDataUser(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}, []);
 
 // Mapear los usuarios en objeto usuario
 const listUsers = dataUser.map(user => {
   return(
-     <div>
-        <User user={user}></User>
-     </div>
+     <>
+        <User user={user} ></User>
+     </>
   )
 })
 
@@ -55,20 +60,7 @@ const listUsers = dataUser.map(user => {
           <tbody>
                {listUsers}
             </tbody>
-            {/* <tr>
-              <td className="table__td">01</td>
-              <td className="table__td">Carlos</td>
-              <td className="table__td">Torres</td>
-              <td className="table__td">Masculino</td>
-              <td className="table__td">1157485829</td>
-              <td className="table__td">
-                <Button className="btn secondary" name="Editar"></Button>
-              </td>
-              <td className="table__td">
-                <Button className="btn danger" name="Eliminar"></Button>
-              </td>
-            </tr>
-            <tr>
+             {/* <tr>
               <td className="table__td">01</td>
               <td className="table__td">Carlos</td>
               <td className="table__td">Torres</td>

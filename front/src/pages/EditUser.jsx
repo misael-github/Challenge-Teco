@@ -1,50 +1,63 @@
-import  {Link} from 'react-router-dom'
-import {useForm} from "react-hook-form"
-import "../styles/form.css"
-import Input from './Input'
-import Button from './Button'
-import { useState } from 'react'
-import uniqid from "uniqid"
-import axios from "axios"
 
-const Form = (props) => {
-    // hook personalizado
-    const {register,formState:{errors}, handleSubmit} = useForm();
+import { useParams } from 'react-router-dom'
+import SubTitle from '../components/SubTitle'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import Form from '../components/Form'
+import { Link } from 'react-router-dom'
+import Button from '../components/Button'
+ 
+const EditUser = () => {
+    const params = useParams()
+      // hooks
+      const [dni, setDni] = useState("")
+      const [name, setName] = useState("")
+      const [lastName, setlastName] = useState("")
+      const [sex, setSex] = useState("")
+      const [phone, setPhone] = useState("")
+    // console.log(params)
 
-    const onSubmit = (data) => {
-      addUser()
-      // console.log(data)
-    }
-     // hooks
-    const [dni, setDni] = useState("")
-    const [name, setName] = useState("")
-    const [lastName, setlastName] = useState("")
-    const [sex, setSex] = useState("")
-    const [phone, setPhone] = useState("")
+    useEffect(() =>{
+      axios.post("/api/user/get-user", {userId: params.id})
+      .then(res => {
+        console.log(res.data[0])
+        const dataUser = res.data[0]
+        setDni(dataUser.dni)
+        setName(dataUser.name)
+        setlastName(dataUser.lastName)
+        setSex(dataUser.sex)
+        setPhone(dataUser.phone)
+      })
+      .catch(err => {
+        console.log(err,`error al obtener data del user ${params.id}`)
+      })
+}, [])
+  
 
-   const addUser = () => {
-      const user = {
+   const editDataUser = () => {
+    // Nuevo objeto para actualizar el user
+     const upDateUser = {
         dni: dni,
         name: name,
         lastName: lastName,
         sex: sex,
         phone:phone,
-        userId: uniqid()
-      }
-      console.log("usersss", user)
-      
-      axios.post("/api/user/create-user", user)
+        userId: params.id
+     }
+     // Petición
+     axios.post("/api/user/edit-user", upDateUser)
       .then(res => {
+        console.log(res.data)
         alert(res.data)
       })
       .then(err => {console.log(err)})
    }
-   console.log(sex)
   return (
-    <>
-      <div className="container-form">
+    <div>
+       <SubTitle subTitle="Editar usuario"></SubTitle>
+       <div className="container-form">
         {/* pasa por el hook handleSubmit antes de ejecutar la funcion*/}
-        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <form className="form" >
           <div className="text-field">
             <label className="label-form">DNI:</label>
             <input
@@ -110,7 +123,7 @@ const Form = (props) => {
            
           </div>
           <div className="container-button">
-            <input type="submit" className="btn primary" value="Crear"/>
+            <input type="submit" className="btn primary" value="Editar usuario" onClick={editDataUser}/>
             {/* <Button className="btn primary btn-crear" name="Crear"></Button> */}
             <Link to="/">
               <Button
@@ -121,8 +134,8 @@ const Form = (props) => {
           </div>
         </form>
       </div>
-    </>
-  );
+    </div>
+  )
 }
 
-export default Form
+export default EditUser

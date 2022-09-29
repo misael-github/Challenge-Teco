@@ -33,27 +33,39 @@ const Form = (props) => {
         phone:phone,
         userId: uniqid()
       }
-      console.log("usersss", user)
+      // console.log("usersss", user)
       
+        // Modal
+      const Modal = () => {
+      Swal.fire({
+      title: "¡Usuario creado correctamente!",
+      confirmButtonText: "Aceptar"
+    // }).then(res => {
+    //   if (res.isConfirmed) {
+    //     navigate(0)
+    //   }
+    // })
+  })}
       axios.post("/api/user/create-user", user)
       .then(res => {
-        console.log("usuario creado")
-        Swal.fire({
-          title: '¡Usuario creado exitosamente!',
-          icon: 'success',
-          confirmButtonText: 'OK'
+        console.log("usuario CREADOOOOOOO")
+        Modal()
+        // Swal.fire({
+        //   title: '¡Usuario creado exitosamente!',
+        //   icon: 'success',
+        //   confirmButtonText: 'OK'})
       // Encadena la promesa para saber lo que pasó en la ventana modal
-      }).then(resp => {
-          if(resp.isConfirmed) {
-            navigate("/")
-              // El usuario hizo clic en el botón aceptar
+      // }).then(resp => {
+      //     if(resp.isConfirmed) {
+      //       navigate("/")
+      //         // El usuario hizo clic en el botón aceptar
              
-          } else {
-              // El usuario cerró la ventana modal sin hacer clic en el botón aceptar
-          }
-      });;
+      //     } else {
+      //         // El usuario cerró la ventana modal sin hacer clic en el botón aceptar
+      //     }
+      // });;
       })
-       .then(err => {console.log(err)})
+      //  .then(err => {console.log(err)})
    }
   return (
     <>

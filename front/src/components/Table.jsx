@@ -35,10 +35,10 @@ const Table = () => {
     axios.post("/api/user/get-user-dni", {dni: search})
     .then(res => {
       setDataUser(res.data)
-      console.log(dataUser)
+      // console.log(dataUser)
       
     })
-    .catch(res => {console.log( "usuario no encontrado")})
+    .catch(res => {console.log(res, "usuario no encontrado")})
   };
  
   

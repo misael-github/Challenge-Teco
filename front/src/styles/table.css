@@ -6,7 +6,7 @@
     justify-content: center;
     background-color: white;
     min-width: 40vw;
-    max-width: 60vw;
+    max-width: 54vw;
     margin: auto;
     border-radius: 10px;
     /* color: #fff; */
@@ -21,6 +21,7 @@
     font-family: 'Poppins', sans-serif;
     text-align: center;
     overflow-y: auto;
+    max-height: 60vh;
     /* width: 100%; */
 }
 

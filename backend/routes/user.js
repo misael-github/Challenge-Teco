@@ -17,7 +17,7 @@ const ModelUser = mongoose.model("users", SchemaUser)
 module.exports = router
 
 
-// Add User
+// Create User
 router.post("/create-user", (req, res) => {
     const newUser = new ModelUser({
         dni: req.body.dni,

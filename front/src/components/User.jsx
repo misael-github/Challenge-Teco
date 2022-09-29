@@ -1,41 +1,45 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import Button from './Button'
-import axios from 'axios'
-import { AOS } from 'aos'
-import "aos/dist/aos.css"
-import Swal from 'sweetalert2'
-
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "./Button";
+import axios from "axios";
+import { AOS } from "aos";
+import "aos/dist/aos.css";
+import Swal from "sweetalert2";
 
 const User = ({ user }) => {
-
   // console.log(user.userId)
 
-  const url = useNavigate()
+  const navigate = useNavigate();
+
+  
 
   // Modal
   const Modal = () => {
     Swal.fire({
       title: "¿Desea eliminar el usuario?",
-      confirmButtonText: "Aceptar"
-    }).then(res => {
+      confirmButtonText: "Aceptar",
+    }).then((res) => {
       if (res.isConfirmed) {
-        deleteUser(user.userId)
+        deleteUser(user.userId);
       }
-    })
-  }
+    });
+  };
 
   // Delete user
   const deleteUser = (userId) => {
-    axios.post("/api/user/delete-user", { userId: userId })
-      .then(res => {
-        console.log(res.data)
-        url(0)
+    axios
+      .post("/api/user/delete-user", { userId: userId })
+      .then((res) => {
+        Swal.fire({
+          title: "Usuario eliminado correctamente",
+          icon: "success",
+        });
+        navigate(0);
       })
-      .catch(err => {
-        console.log(err, `error al eliminar el user ${user.id}`)
-      })
-  }
+      .catch((err) => {
+        console.log(err, `error al eliminar el user ${user.id}`);
+      });
+  };
   return (
     <>
       <tr>
@@ -58,7 +62,7 @@ const User = ({ user }) => {
         </td>
       </tr>
     </>
-  )
-}
+  );
+};
 
-export default User
+export default User;

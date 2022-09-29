@@ -1,10 +1,10 @@
-import './App.css';
-import Title from './components/Title';
-import Table from './components/Table';
-import CreateUser from './pages/CreateUser';
-import EditUser from './pages/EditUser';
-import Home from './pages/Home';
-import {Route, Routes} from "react-router-dom"
+import "./App.css";
+import Title from "./components/Title";
+import Table from "./components/Table";
+import CreateUser from "./pages/CreateUser";
+import EditUser from "./pages/EditUser";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <div className="App">

@@ -16,7 +16,6 @@ const Table = () => {
 
   const [search, setSearch] = useState("");
 
-
   useEffect(() => {
     axios
       .get("/api/user/get-users")
@@ -32,18 +31,18 @@ const Table = () => {
 
   // Busca por dni, setea el state con la nueva data de el user encontrado
   const Search = () => {
-    axios.post("/api/user/get-user-dni", {dni: search})
-    .then(res => {
-      setDataUser(res.data)
-      // console.log(dataUser)
-      
-    })
-    .catch(res => {console.log(res, "usuario no encontrado")})
+    axios
+      .post("/api/user/get-user-dni", { dni: search })
+      .then((res) => {
+        setDataUser(res.data);
+        // console.log(dataUser)
+      })
+      .catch((res) => {
+        console.log(res, "usuario no encontrado");
+      });
   };
- 
-  
 
-  // Mapea el state (los usuarios) 
+  // Mapea el state (los usuarios)
   const listUsers = dataUser.map((user) => {
     return (
       <>
@@ -61,20 +60,20 @@ const Table = () => {
             <Button className="btn primary" name="Crear usuario"></Button>
           </Link>
           <div>
-          <Input
-            className="input-search"
-            placeholder="Bucar por DNI"
-            type="search"
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          ></Input>
-          
-          <Button
-            className="btn primary"
-            name="Buscar"
-            onClick={Search}
-          ></Button>
+            <Input
+              className="input-search"
+              placeholder="Bucar por DNI"
+              type="search"
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            ></Input>
+
+            <Button
+              className="btn primary"
+              name="Buscar"
+              onClick={Search}
+            ></Button>
           </div>
         </div>
         <hr />

@@ -5,12 +5,12 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const SchemaUser = new Schema({
-    dni:String,
-    name:String,
-    lastName:String,
-    sex:String,
-    phone:String,
-    userId:String
+    dni: String,
+    name: String,
+    lastName: String,
+    sex: String,
+    phone: String,
+    userId: String
 })
 
 const ModelUser = mongoose.model("users", SchemaUser)
@@ -20,17 +20,17 @@ module.exports = router
 // Add User
 router.post("/create-user", (req, res) => {
     const newUser = new ModelUser({
-        dni:req.body.dni,
-        name:req.body.name,
-        lastName:req.body.lastName,
-        sex:req.body.sex,
-        phone:req.body.phone,
+        dni: req.body.dni,
+        name: req.body.name,
+        lastName: req.body.lastName,
+        sex: req.body.sex,
+        phone: req.body.phone,
         userId: req.body.userId
     })
     newUser.save((err) => {
-        if(!err){
+        if (!err) {
             res.send("Usuario agregado correctamente")
-        }else {
+        } else {
             res.send(err)
         }
     })
@@ -39,9 +39,9 @@ router.post("/create-user", (req, res) => {
 // Get users
 router.get("/get-users", (req, res) => {
     ModelUser.find({}, (docs, err) => {
-        if(!err){
+        if (!err) {
             res.send(docs)
-        }else {
+        } else {
             res.send(err)
         }
     })
@@ -49,20 +49,20 @@ router.get("/get-users", (req, res) => {
 
 // Get user
 router.post("/get-user", (req, res) => {
-    ModelUser.find({userId:req.body.userId}, (docs, err) => {
-        if(!err){
+    ModelUser.find({ userId: req.body.userId }, (docs, err) => {
+        if (!err) {
             res.send(docs)
-        }else {
+        } else {
             res.send(err)
         }
     })
 })
 // Get user DNI
 router.post("/get-user-dni", (req, res) => {
-    ModelUser.findOne({dni:req.body.dni}, (docs, err) => {
-        if(!err){
-            res.send("usuario encontrado")
-        }else {
+    ModelUser.find({ dni: req.body.dni }, (docs, err) => {
+        if (!err) {
+            res.send(docs)
+        } else {
             res.send(err)
         }
     })
@@ -70,29 +70,29 @@ router.post("/get-user-dni", (req, res) => {
 
 // Update user
 router.post("/edit-user", (req, res) => {
-  ModelUser.findOneAndUpdate({userId:req.body.userId}, {
-        dni:req.body.dni,
-        name:req.body.name,
-        lastName:req.body.lastName,
-        sex:req.body.sex,
-        phone:req.body.phone,
+    ModelUser.findOneAndUpdate({ userId: req.body.userId }, {
+        dni: req.body.dni,
+        name: req.body.name,
+        lastName: req.body.lastName,
+        sex: req.body.sex,
+        phone: req.body.phone,
         userId: req.body.userId
-  }, (err) => {
-        if(!err){
-        res.send("Usuario actualizado correcatmente")
-        }else {
-        res.send(err)
-     }
-  })
+    }, (err) => {
+        if (!err) {
+            res.send("Usuario actualizado correcatmente")
+        } else {
+            res.send(err)
+        }
+    })
 })
 // Delete User
 router.post("/delete-user", (req, res) => {
-    ModelUser.findOneAndDelete({userId:req.body.userId}, (err) => {
-        if(!err){
+    ModelUser.findOneAndDelete({ userId: req.body.userId }, (err) => {
+        if (!err) {
             res.send("Usuario eliminado correcatmente")
-            }else {
+        } else {
             res.send(err)
-         }
-     
+        }
+
     })
-  })
+})

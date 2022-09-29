@@ -16,7 +16,6 @@ const Table = () => {
 
   const [search, setSearch] = useState("");
 
-  const params = useParams()
 
   useEffect(() => {
     axios
@@ -31,16 +30,20 @@ const Table = () => {
       });
   }, []);
 
-  // Buscar por dni
+  // Busca por dni, setea el state con la nueva data de el user encontrado
   const Search = () => {
-    axios.post("/api/user/get-user-dni", {dni: params.dni})
+    axios.post("/api/user/get-user-dni", {dni: search})
     .then(res => {
-      // console.log(res.data, "usuario encontrado: ", search)
+      setDataUser(res.data)
+      console.log(dataUser)
+      
     })
+    .catch(res => {console.log( "usuario no encontrado")})
   };
-  // console.log(search);
+ 
+  
 
-  // Mapea los usuarios 
+  // Mapea el state (los usuarios) 
   const listUsers = dataUser.map((user) => {
     return (
       <>
@@ -66,6 +69,7 @@ const Table = () => {
               setSearch(e.target.value);
             }}
           ></Input>
+          
           <Button
             className="btn primary"
             name="Buscar"

@@ -8,22 +8,20 @@ import {Route, Routes} from "react-router-dom"
 function App() {
   return (
     <div className="App">
-      {/* <Title title="App de usuarios"></Title>
-          <Table></Table>   */}
-          {/* <Title title="App de usuarios"></Title> */}
       <Routes>
-          <Route exact path="/" element={<Home></Home>}></Route>
-          <Route exact
-            path="/create-user"
-            element={<CreateUser></CreateUser>}
-          ></Route>
-          <Route exact
-            path="/edit-user/:id"
-            element={<EditUser></EditUser>}
-          ></Route>
-          <Route exact path="/get-user/:dni" element={<Home></Home>}></Route>
+        <Route exact path="/" element={<Home></Home>}></Route>
+        <Route
+          exact
+          path="/create-user"
+          element={<CreateUser></CreateUser>}
+        ></Route>
+        <Route
+          exact
+          path="/edit-user/:id"
+          element={<EditUser></EditUser>}
+        ></Route>
+        <Route exact path="/get-user-dni/:dni" element={<Home></Home>}></Route>
       </Routes>
-      
     </div>
   );
 }

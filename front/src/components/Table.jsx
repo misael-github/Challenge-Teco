@@ -2,19 +2,21 @@ import React from "react";
 import "../styles/table.css";
 import Button from "./Button";
 import Input from "./Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import User from "./User";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import "aos/dist/aos.css";
 import { AOS } from "aos";
-import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Table = () => {
   const [dataUser, setDataUser] = useState([]);
 
   const [search, setSearch] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -35,7 +37,19 @@ const Table = () => {
       .post("/api/user/get-user-dni", { dni: search })
       .then((res) => {
         setDataUser(res.data);
-        // console.log(dataUser)
+        if(res.data.length === 0){
+          Swal.fire({
+            title:"Usuario no encontrado",
+            icon:"error",
+            text:"El cliente no existe en la base de datos",
+            confirmButtonText: "Ok",
+          })
+          .then(() => {
+           navigate(0)
+          })
+          // console.log("usuario no encontrado")
+        }
+         
       })
       .catch((res) => {
         console.log(res, "usuario no encontrado");

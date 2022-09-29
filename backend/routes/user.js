@@ -61,6 +61,7 @@ router.post('/get-user-dni', (req, res) => {
   ModelUser.find({ dni: req.body.dni }, (docs, err) => {
     if (!err) {
       res.send(docs);
+      
     } else {
       res.send(err);
     }

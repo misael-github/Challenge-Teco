@@ -20,7 +20,7 @@ const Table = () => {
 
   useEffect(() => {
     axios
-      .get("/api/user/get-users")
+      .get("https://telecom-challenge.herokuapp.com/api/user/get-users")
       .then((res) => {
         // console.log(res.data, "desde la table");
         setDataUser(res.data);
@@ -34,7 +34,7 @@ const Table = () => {
   // Busca por dni, setea el state con la nueva data de el user encontrado
   const Search = () => {
     axios
-      .post("/api/user/get-user-dni", { dni: search })
+      .post("https://telecom-challenge.herokuapp.com/api/user/get-user-dni", { dni: search })
       .then((res) => {
         setDataUser(res.data);
         if(res.data.length === 0){

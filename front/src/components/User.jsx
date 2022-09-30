@@ -28,7 +28,7 @@ const User = ({ user }) => {
   // Delete user
   const deleteUser = (userId) => {
     axios
-      .post("/api/user/delete-user", { userId: userId })
+      .post("https://telecom-challenge.herokuapp.com/api/user/delete-user", { userId: userId })
       .then((res) => {
         Swal.fire({
           title: "Usuario eliminado correctamente",

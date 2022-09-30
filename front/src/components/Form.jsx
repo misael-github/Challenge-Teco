@@ -37,9 +37,9 @@ const Form = (props) => {
     // console.log("usersss", user)
 
     axios
-      .post("/api/user/create-user", user)
+      .post("https://telecom-challenge.herokuapp.com/api/user/create-user", user)
       .then(res => {
-        console.log("usuario CREADOOOOOOO");
+        console.log("usuario CREADO");
         Swal.fire({
           title: "¡Usuario creado exitosamente!",
           icon: "success",
@@ -129,7 +129,6 @@ const Form = (props) => {
             />
           </div>
           <div className="container-button">
-            <input type="submit" className="btn primary" value="Crear" />
             {/* <Button className="btn primary btn-crear" name="Crear"></Button> */}
             <Link to="/">
               <Button
@@ -137,6 +136,7 @@ const Form = (props) => {
                 name="Volver"
               ></Button>
             </Link>
+            <input type="submit" className="btn primary btn-crear" value="Crear" />
           </div>
         </form>
       </div>

@@ -25,7 +25,7 @@ const EditUser = () => {
   // Obtiene el usuario que se eligió para editar y setea el state con los valores que trajo
   useEffect(() => {
     axios
-      .post("/api/user/get-user", { userId: params.id })
+      .post("https://telecom-challenge.herokuapp.com/api/user/get-user", { userId: params.id })
       .then((res) => {
         console.log(res.data[0]);
         const dataUser = res.data[0]; // obtiene el user
@@ -53,7 +53,7 @@ const EditUser = () => {
 
     // Petición usando axios, se pasa el usuario editado a la api
     axios
-      .post("/api/user/edit-user", upDateUser)
+      .post("https://telecom-challenge.herokuapp.com/api/user/edit-user", upDateUser)
       .then(res => {
         Swal.fire({
           title: "¡Usuario editado exitosamente!",

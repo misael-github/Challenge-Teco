@@ -1,6 +1,6 @@
 <h1>App usuarios</h1> 
 <p>
- App usuarios es un desafio propuesto por la empresa Telecom la cual se realiza en respuesta a una vacanta de empleo.
+ App usuarios es un desafio propuesto por la empresa Telecom la cual se realiza en respuesta a la vacante de empleo para el puesto desarrollador full stack.
 </p>
 <h3>Link: https://challenge-telecom.vercel.app/</h3>
 <h3>Requerimientos:</h3>

@@ -1,0 +1,11 @@
+
+{"_id":{"$oid":"6334f7bd1853a2a401aff73e"},"dni":"38956452","name":"Andrea","lastName":"Joncon","sex":"femenino","phone":"11254632578","userId":"l8me4c4k","__v":0}
+{"_id":{"$oid":"6334f8131853a2a401aff741"},"dni":"12456589","name":"Luis","lastName":"Pacos","sex":"masculino","phone":"1562423589","userId":"l8me665p","__v":0}
+{"_id":{"$oid":"6334f8851853a2a401aff743"},"dni":"41526598","name":"Nicolas","lastName":"Schainer","sex":"masculino","phone":"1124569865","userId":"l8me8mm7","__v":0}
+{"_id":{"$oid":"6334f9131853a2a401aff746"},"dni":"12568945","name":"Lurdes","lastName":"Nick","sex":"femenino","phone":"1124569875","userId":"l8mebnrj","__v":0}
+{"_id":{"$oid":"6335075e1853a2a401aff75a"},"dni":"35896574","name":"Estela","lastName":"Carlota","sex":"femenino","phone":"1125639875","userId":"l8mgi2o4","__v":0}
+{"_id":{"$oid":"63350c3faf90b53814d86774"},"dni":"42516589","name":"cristian","lastName":"morales","sex":"masculino","phone":"1125648965","userId":"l8mh8uni","__v":0}
+{"_id":{"$oid":"63350f960b5d6f8368346e60"},"dni":"45986325","name":"Aldana","lastName":"gomez","sex":"femenino","phone":"1145259862","userId":"l8mhr6kw","__v":0}
+{"_id":{"$oid":"633510900b5d6f8368346e64"},"dni":"22569845","name":"Carlos","lastName":"tristan","sex":"masculino","phone":"1235456846","userId":"l8mhwjxh","__v":0}
+{"_id":{"$oid":"6335111a0b5d6f8368346e67"},"dni":"38956478","name":"Juan","lastName":"Hernandez","sex":"masculino","phone":"51651651","userId":"l8mhzi82","__v":0}
+{"_id":{"$oid":"6335990b95a55b5f5d627968"},"dni":"16528496","name":"Esther","lastName":"Maris","sex":"femenino","phone":"1125468965","userId":"l8n2pey5","__v":0}

@@ -1,10 +1,16 @@
 .container-form {
-    width: 35vw;
+    width: 40vw;
     /* height: 55vh; */
     margin: auto;
     background-color: #fff;
     border-radius: 10px;
     margin: 80px auto;
+}
+
+@media screen and (max-width: 768px){
+    .container-form{
+        width: 90vw;
+    }
 }
 .form {
     display: flex;

@@ -1,9 +1,9 @@
 // Import de variable locales
-require("dotenv").config({path: "./variables.env"})
+require("dotenv").config()
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/crudmernstack');
-console.log(process.env.DB_URL)
+mongoose.connect(process.env.DB_URL);
+
 
 const db = mongoose.connection;
 

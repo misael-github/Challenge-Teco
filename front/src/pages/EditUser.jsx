@@ -145,12 +145,7 @@ const EditUser = () => {
             />
           </div>
           <div className="container-button">
-            <input
-              type="submit"
-              className="btn primary"
-              value="Editar usuario"
-              onClick={editDataUser}
-            />
+           
             {/* <Button className="btn primary btn-crear" name="Crear"></Button> */}
             <Link to="/">
               <Button
@@ -158,6 +153,12 @@ const EditUser = () => {
                 name="Volver"
               ></Button>
             </Link>
+            <input
+              type="submit"
+              className="btn primary btn-edit"
+              value="Editar usuario"
+              onClick={editDataUser}
+            />
           </div>
         </form>
       </div>

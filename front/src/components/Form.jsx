@@ -1,7 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import "../styles/form.css";
-import Input from "./Input";
 import Button from "./Button";
 import { useState } from "react";
 import uniqid from "uniqid";
@@ -100,7 +98,7 @@ const Form = (props) => {
               }}
             />
           </div>
-          <div className="text-field">
+          <div className="text-field content-select">
             <label className="label-form">Sexo:</label>
             <select
               className="form__select-sex"

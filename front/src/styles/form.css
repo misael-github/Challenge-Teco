@@ -23,6 +23,7 @@
     display: flex;
     flex-direction: column;
     margin: 12px;
+   
 }
 .container-button{
     display: flex;
@@ -37,13 +38,19 @@
     width: 90px;
     margin-left: 20px;
 }
+.btn-edit {
+    margin-left: 20px;
+}
 .form__required-data {
     margin-bottom: 0;
     color: red;
     font-size: 14px;
 }
-.form__select-sex{
-    width: 80%;
+select {
+    width: 87%;
     padding: 12px;
     border-radius: 5px;
+    
+    
 }
+
